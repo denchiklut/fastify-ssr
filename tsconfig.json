@@ -1,0 +1,38 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"allowSyntheticDefaultImports": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitThis": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"skipDefaultLibCheck": true,
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"module": "commonjs",
+		"target": "esnext",
+		"jsx": "react-jsx",
+		"baseUrl": ".",
+		"lib": ["esnext", "dom", "webworker", "DOM.Iterable"],
+		"paths": {
+			"src/*": ["src/*"],
+			"server/*": ["src/server/*"],
+			"client/*": ["src/client/*"],
+			"components/*": ["src/client/components/*"],
+			"@shared/*": ["src/client/components/@shared/*"],
+			"pages/*": ["src/client/pages/*"],
+			"utils/*": ["src/client/utils/*"],
+			"assets/*": ["src/client/assets/*"],
+			"config/*": ["config/*"]
+		},
+		"typeRoots": ["@types", "node_modules/@types"]
+	},
+	"exclude": ["node_modules"]
+}
