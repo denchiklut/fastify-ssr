@@ -1,14 +1,16 @@
-import express from 'express'
-import { favicon, hmr, render, logger, error } from 'server/middleware'
-import { bootstrap } from 'server/utils'
-import { router } from 'server/router'
+import { resolve } from 'path'
+import cors from '@fastify/cors'
+import fastifyStatic from '@fastify/static'
 
-export const app = express()
-	.use(favicon())
-	.use(hmr())
-	.use(logger)
-	.use(render)
-	.use(router)
-	.use(error)
+import { fastify, renderApp } from 'server/utils'
+import { logger } from 'src/common'
 
-bootstrap(app)
+export const app = fastify()
+	.register(cors)
+	.register(fastifyStatic, {
+		root: resolve(__dirname, IS_DEV ? '../../assets' : '../client'),
+		prefix: '/static'
+	})
+	.register(renderApp)
+	.listen({ port: 3000 })
+	.then(address => logger.info(`Application is started on 🌎 ${address}`))

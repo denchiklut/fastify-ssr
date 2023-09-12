@@ -1,4 +1,4 @@
-# fastify
+# fastify-ssr
 
 To install dependencies:
 
@@ -6,10 +6,14 @@ To install dependencies:
 bun install
 ```
 
-To run:
+To run dev mode:
 
 ```bash
-bun run index.ts
+bun dev
 ```
 
-This project was created using `bun init` in bun v1.0.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+To run prod mode:
+
+```bash
+bun start
+```

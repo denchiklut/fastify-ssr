@@ -6,7 +6,7 @@ import * as plugins from '../plugins'
 import * as rules from '../rules'
 
 export default {
-	name: 'express',
+	name: 'fastify',
 	target: 'node',
 	devtool: IS_DEV ? false : 'source-map',
 	externalsPresets: { node: true },

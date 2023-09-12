@@ -1,7 +1,7 @@
-import type { Request } from 'express'
+import type { FastifyRequest } from 'fastify'
 
 export const createFetchHeaders = (
-	requestHeaders?: Request['headers']
+	requestHeaders?: FastifyRequest['headers']
 ): Headers => {
 	const headers = new Headers()
 
@@ -20,13 +20,13 @@ export const createFetchHeaders = (
 	return headers
 }
 
-export const createFetchRequest = (req: Request): globalThis.Request => {
-	const origin = `${req.protocol}://${req.get('host')}`
-	const url = new URL(req.originalUrl || req.url, origin)
+export const createFetchRequest = (req: FastifyRequest): Request => {
+	const origin = `${req.protocol}://${req.hostname}`
+	const url = new URL(req.url, origin)
 
 	const controller = new AbortController()
 
-	req.on('close', () => {
+	req.raw.on('close', () => {
 		controller.abort()
 	})
 
@@ -37,7 +37,7 @@ export const createFetchRequest = (req: Request): globalThis.Request => {
 	}
 
 	if (req.method !== 'GET' && req.method !== 'HEAD') {
-		init.body = req.body
+		init.body = JSON.stringify(req.body)
 	}
 
 	return new Request(url.href, init)
