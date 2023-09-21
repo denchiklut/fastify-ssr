@@ -6,6 +6,7 @@ import { fetchPosts } from 'client/api'
 
 const Home = loadable(() => import('pages/home'))
 const About = loadable(() => import('pages/about'))
+const Uikit = loadable(() => import('pages/uikit'))
 const NotFound = loadable(() => import('pages/not-found'))
 
 export const routes: RouteObject[] = [
@@ -19,6 +20,7 @@ export const routes: RouteObject[] = [
 				element: <Home />
 			},
 			{ path: 'about', element: <About /> },
+			{ path: 'uikit', element: <Uikit /> },
 			{ path: '*', element: <NotFound /> }
 		]
 	}

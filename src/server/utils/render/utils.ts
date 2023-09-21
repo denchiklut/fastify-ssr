@@ -4,11 +4,7 @@ import type { RouteObject } from 'react-router-dom'
 import { ChunkExtractorOptions } from '@loadable/server'
 import requireFromString from 'require-from-string'
 import type { FastifyInstance } from 'fastify'
-import type {
-	Stats,
-	MultiCompiler,
-	OutputFileSystem
-} from 'webpack-dev-middleware'
+import type { Stats, MultiCompiler, OutputFileSystem } from 'webpack-dev-middleware'
 
 import type { ChunkExtractor } from '@loadable/server'
 import { getENV, publicPath, setEnvVars } from 'src/common'
@@ -26,12 +22,11 @@ export const getHtml = (reactHtml: string, chunkExtractor: ChunkExtractor) => {
         <meta charset='UTF-8'>
         <title>SSR app</title>
         <meta name='data-app-version' content='${appVersion}'>
-        <link rel='icon' type='image/x-icon' href='${publicPath(
-					'static/icons/favicon.ico'
-				)}'>
-        <link rel='apple-touch-icon' href='${publicPath(
-					'static/icons/maskable.png'
-				)}'>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+        <link rel='icon' type='image/x-icon' href='${publicPath('static/icons/favicon.ico')}'>
+        <link rel='apple-touch-icon' href='${publicPath('static/icons/maskable.png')}'>
         <meta content='width=device-width, initial-scale=1' name='viewport' />
         <meta name='theme-color' content='#efefef'>
         ${linkTags}
@@ -69,9 +64,7 @@ export const getApp = (app: FastifyApp) => {
 
 	const outputFileSystem = compiler.outputFileSystem as OutputFileSystem
 	const { assetsByChunkName, outputPath } = statsCompilation
-	const serverAppFileName = assetsByChunkName?.main?.find(
-		chunk => chunk === 'js/app.server.js'
-	)
+	const serverAppFileName = assetsByChunkName?.main?.find(chunk => chunk === 'js/app.server.js')
 
 	if (!(serverAppFileName && outputPath && outputFileSystem?.readFileSync)) {
 		throw Error('Render file not found')

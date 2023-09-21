@@ -1,3 +1,9 @@
+import { Page } from '@shared/page'
+
 export default () => {
-	return <p>Not found</p>
+	return (
+		<Page>
+			<p>Not found</p>
+		</Page>
+	)
 }

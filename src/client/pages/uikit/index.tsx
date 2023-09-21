@@ -1,10 +1,10 @@
-import { About } from 'components/about'
+import { Uikit } from 'components/uikit'
 import { Page } from '@shared/page'
 
 export default () => {
 	return (
 		<Page>
-			<About />
+			<Uikit />
 		</Page>
 	)
 }
